@@ -1,4 +1,3 @@
-pipenv shell
 cd ~/work/topic-transfer/src/
 case $HOSTNAME in
   "clover11" ) DATA=yelpf;;
