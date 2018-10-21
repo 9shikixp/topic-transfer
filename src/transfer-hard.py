@@ -61,7 +61,7 @@ mode = args.mode
 
 if mode == 'ag_news':
     header = ['class_id', 'title', 'description']
-    train_df = pd.read_csv('../data/data/ag_news/train.csv', header=None, names=header)
+    train_df = pd.read_csv('../data/ag_news/train.csv', header=None, names=header)
     test_df = pd.read_csv('../data/ag_news/test.csv', header=None, names=header)
 elif mode == 'db_pedia':
     header = ['class_id', 'title', 'description']
