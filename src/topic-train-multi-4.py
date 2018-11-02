@@ -26,7 +26,7 @@ def lossfun(x, t):
         soft20_label = t[:,1:21]
         soft100_label = t[:,21:121]
         soft200_label = t[:,121:321]
-        soft10n_x = x[:,321:]
+        soft10n_label = t[:,321:]
 
     soft20_loss = - (F.sum(soft20_label * F.log_softmax(soft20_x))) / soft20_x.shape[0]
     soft100_loss = - (F.sum(soft100_label * F.log_softmax(soft100_x))) / soft100_x.shape[0]
@@ -156,8 +156,8 @@ if gpu_id >= 0:
     model.to_gpu(gpu_id)
 
 
-train_y = np.concatenate([train_y.reshape(-1, 1), train_soft20, train_soft40, train_soft, train_soft200], axis=1).astype(np.float32)
-test_y = np.concatenate([test_y.reshape(-1, 1), test_soft20, test_soft40, test_soft, test_soft200], axis=1).astype(np.float32)
+train_y = np.concatenate([train_y.reshape(-1, 1), train_soft20, train_soft, train_soft200, train_soft10n], axis=1).astype(np.float32)
+test_y = np.concatenate([test_y.reshape(-1, 1), test_soft20, test_soft, test_soft200, test_soft10n], axis=1).astype(np.float32)
 
 print(mode, train_x.shape, train_y.shape, test_x.shape, test_y.shape)
 
